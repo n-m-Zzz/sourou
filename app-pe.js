@@ -133,7 +133,7 @@ function getProductRecommendation(result) {
       key: 'valif',
       name: 'バリフ',
       badge: hasED ? 'ED改善' : 'パフォーマンス向上',
-      image: 'img/med-valif.jpg',
+      image: 'med-valif.jpg',
       description: hasED
         ? 'バルデナフィル20mg配合。勃起力改善に特化したED治療薬。'
         : '深刻な悩みがなくても、より硬く長く楽しみたい人向け。',
@@ -149,7 +149,7 @@ function getProductRecommendation(result) {
       key: 'supertadarise',
       name: 'スーパータダライズ',
       badge: '早漏＋ED対応',
-      image: 'img/med-supertadarise.jpg',
+      image: 'med-supertadarise.jpg',
       description: 'ダポキセチン＋タダラフィル配合。早漏と勃起力の両方に同時対応する複合薬。',
       primaryLabel: 'スーパータダライズの詳細を見る',
       primaryUrl: PRODUCT_URLS.supertadarise,
@@ -162,7 +162,7 @@ function getProductRecommendation(result) {
     key: 'poxet',
     name: 'ポゼット',
     badge: '早漏専用',
-    image: 'img/med-poxet.jpg',
+    image: 'med-poxet.jpg',
     description: 'ダポキセチン60mg配合。射精コントロールに特化した早漏防止薬。',
     primaryLabel: 'ポゼットの詳細を見る',
     primaryUrl: PRODUCT_URLS.poxet,
@@ -292,7 +292,7 @@ function renderPEResultPage() {
 
   // ヒーロー画像
   const heroImage = document.getElementById('heroImage');
-  if (heroImage) heroImage.src = `img/result-${data.peType}.png`;
+  if (heroImage) heroImage.src = `result-${data.peType}.png`;
 
   // テキスト
   setText('typeChip', typeContent.name);
