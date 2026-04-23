@@ -171,6 +171,44 @@ function getProductRecommendation(result) {
   };
 }
 
+// ---------- GA4カスタムイベント計測 ----------
+function trackDiagnosisStart() {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', 'diagnosis_start', {
+    event_category: 'engagement',
+    event_label: 'check_page_loaded',
+  });
+}
+
+function trackDiagnosisComplete(peType, hasED) {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', 'diagnosis_complete', {
+    event_category: 'conversion',
+    pe_type: peType,
+    has_ed: hasED,
+    event_label: 'diagnosis_finished',
+  });
+}
+
+function trackCTAClick(productName, productUrl) {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', 'cta_click', {
+    event_category: 'conversion',
+    product_name: productName,
+    product_url: productUrl,
+    event_label: 'product_link_clicked',
+  });
+}
+
+function trackECTransition(productName) {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', 'ec_transition', {
+    event_category: 'conversion',
+    product_name: productName,
+    event_label: 'external_site_transition',
+  });
+}
+
 // ---------- ユーティリティ ----------
 function setText(id, text) {
   const el = document.getElementById(id);
@@ -184,6 +222,7 @@ function savePEDiagnosis(data) {
   const result = calculatePEType(data);
   const full = { ...data, ...result, checkedAt: new Date().toISOString() };
   sessionStorage.setItem('pe_check_data', JSON.stringify(full));
+  trackDiagnosisComplete(full.peType, full.hasED);
   return full;
 }
 
@@ -202,6 +241,7 @@ function clearPEDiagnosis() {
 function initCheckPage() {
   const form    = document.getElementById('peCheckForm');
   if (!form) return;
+  trackDiagnosisStart();
 
   const cards        = Array.from(form.querySelectorAll('.question-card'));
   const progressBar  = document.getElementById('progressBar');
@@ -333,9 +373,19 @@ function renderPEResultPage() {
   if (ctaPrimary) {
     ctaPrimary.textContent = product.primaryLabel;
     ctaPrimary.href = product.primaryUrl;
+    ctaPrimary.addEventListener('click', () => {
+      trackCTAClick(product.name, product.primaryUrl);
+      trackECTransition(product.name);
+    });
   }
   const ctaSecondary = document.getElementById('ctaSecondary');
-  if (ctaSecondary) ctaSecondary.href = PRODUCT_URLS.compare;
+  if (ctaSecondary) {
+    ctaSecondary.href = PRODUCT_URLS.compare;
+    ctaSecondary.addEventListener('click', () => {
+      trackCTAClick('治療薬比較', PRODUCT_URLS.compare);
+      trackECTransition('治療薬比較');
+    });
+  }
 }
 
 // ---------- 結果ページ（normal） ----------
@@ -367,7 +417,13 @@ function renderNormalResultPage() {
   setText('stateBody',  '今回の回答では、射精時間・頻度・コントロール感・困り感のどれも比較的落ち着いた状態です。ただし、より充実した夜の営みを目指したい場合は、パフォーマンス向上のアプローチも選択肢のひとつです。');
 
   const ctaPrimary = document.getElementById('ctaPrimary');
-  if (ctaPrimary) ctaPrimary.href = PRODUCT_URLS.valif;
+  if (ctaPrimary) {
+    ctaPrimary.href = PRODUCT_URLS.valif;
+    ctaPrimary.addEventListener('click', () => {
+      trackCTAClick('バリフ', PRODUCT_URLS.valif);
+      trackECTransition('バリフ');
+    });
+  }
 }
 
 // ---------- Fallback ----------
