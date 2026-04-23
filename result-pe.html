@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>診断結果｜早漏タイプ診断</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="result-pe">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">早漏タイプ診断</a>
+      <nav class="nav-links">
+        <a href="check.html" data-clear-result>もう一度診断する</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="result-page">
+    <div class="narrow-result">
+
+      <section id="resultFallback" class="fallback-card is-hidden">
+        <h1>診断結果が見つかりませんでした</h1>
+        <p>先に診断ページで回答してください。</p>
+        <div class="btn-row"><a class="btn btn-primary" href="check.html">診断ページへ戻る</a></div>
+      </section>
+
+      <section id="resultContent" class="result-content">
+
+        <!-- ① ヒーロー -->
+        <section class="result-hero-card">
+          <div class="result-image-wrap">
+            <img id="heroImage" src="" alt="診断結果">
+          </div>
+          <div class="result-hero-body">
+            <p class="eyebrow">RESULT</p>
+            <span class="level-chip" id="typeChip"></span>
+            <div class="badge-row">
+              <span class="badge-pe" id="peBadge"></span>
+              <span class="badge-ed" id="edBadge" style="display:none;">ED傾向あり</span>
+            </div>
+            <p class="lead" id="heroSummary"></p>
+            <div class="btn-row">
+              <a class="btn btn-secondary" href="check.html" data-clear-result>もう一度診断する</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ② タイプ説明 -->
+        <section class="content-card">
+          <h2>あなたの早漏タイプ</h2>
+          <h3 id="stateTitle"></h3>
+          <p id="stateBody" style="font-size:14px;color:#4a5268;line-height:1.85;margin-top:8px;"></p>
+        </section>
+
+        <!-- ③ 4項目 -->
+        <section class="content-card">
+          <h2>早漏に関わる4つのポイント</h2>
+          <div class="result-cards-grid">
+            <article class="mini-result-card"><h3>時間の長さ</h3><p id="cardDuration"></p></article>
+            <article class="mini-result-card"><h3>早い頻度</h3><p id="cardFrequency"></p></article>
+            <article class="mini-result-card"><h3>コントロール感</h3><p id="cardControl"></p></article>
+            <article class="mini-result-card"><h3>困り具合</h3><p id="cardDistress"></p></article>
+          </div>
+        </section>
+
+        <!-- ④ なぜ起きるのか -->
+        <section class="content-card education-card">
+          <h2>なぜこのタイプの早漏が起きるのか</h2>
+          <div class="education-item">
+            <div class="education-icon">
+              <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636-.707.707M21 12h-1M4 12H3m3.343-5.657-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            </div>
+            <div class="education-content">
+              <h3 id="mechanismTitle"></h3>
+              <p id="mechanismBody"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ⑤ アプローチ -->
+        <section class="content-card education-card">
+          <h2>どのようなアプローチが効果的か</h2>
+          <div class="education-item">
+            <div class="education-icon">
+              <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div class="education-content">
+              <h3 id="approachTitle"></h3>
+              <p id="approachBody"></p>
+            </div>
+          </div>
+          <div class="ed-notice" id="edNotice" style="display:none;">
+            <p class="ed-notice-text" id="edNoticeText"></p>
+          </div>
+        </section>
+
+        <!-- ⑥ CTA -->
+        <section class="cta-panel">
+          <div class="cta-panel-header">
+            <h2>あなたに最適な治療薬</h2>
+          </div>
+          <div class="cta-panel-body">
+            <p class="cta-lead" id="ctaLead"></p>
+            <div class="product-main-card">
+              <div class="product-image">
+                <img id="productImg" src="" alt="">
+                <span class="product-badge" id="productBadge"></span>
+              </div>
+              <div class="product-info">
+                <h3 id="productName"></h3>
+                <p id="productDesc"></p>
+              </div>
+            </div>
+            <a id="ctaPrimary" class="btn-cta-primary" href="#" target="_blank" rel="noopener"></a>
+            <a id="ctaSecondary" class="btn-cta-secondary" href="#" target="_blank" rel="noopener">治療薬の比較を見る</a>
+            <p class="cta-sub" id="ctaSubcopy"></p>
+          </div>
+        </section>
+
+        <!-- ⑦ リトライ -->
+        <section class="retry-card">
+          <h2>もう一度診断する</h2>
+          <p>最近の体調や状況が変わると、結果も変わることがあります。</p>
+          <div class="btn-row"><a class="btn btn-secondary" href="check.html" data-clear-result>もう一度診断する</a></div>
+        </section>
+
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">© 早漏タイプ診断</div>
+  </footer>
+
+  <script src="app-pe.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>診断結果｜早漏タイプ診断</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="result-normal">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">早漏タイプ診断</a>
+      <nav class="nav-links">
+        <a href="check.html" data-clear-result>もう一度診断する</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="result-page">
+    <div class="narrow-result">
+
+      <section id="resultFallback" class="fallback-card is-hidden">
+        <h1>診断結果が見つかりませんでした</h1>
+        <p>先に診断ページで回答してください。</p>
+        <div class="btn-row"><a class="btn btn-primary" href="check.html">診断ページへ戻る</a></div>
+      </section>
+
+      <section id="resultContent" class="result-content">
+
+        <!-- ① ヒーロー -->
+        <section class="result-hero-card">
+          <div class="result-image-wrap">
+            <img src="img/result-normal.png" alt="パフォーマンス向上型">
+          </div>
+          <div class="result-hero-body">
+            <p class="eyebrow">RESULT</p>
+            <span class="level-chip">パフォーマンス向上型</span>
+            <div class="badge-row">
+              <span class="badge-pe">早漏傾向：軽微</span>
+              <span class="badge-ed" id="edBadge" style="display:none;">ED傾向あり</span>
+            </div>
+            <p class="lead" id="heroSummary">今回の診断では、深刻な早漏の傾向は見られませんでした。夜の営みの満足度をさらに高めたい場合は、パフォーマンス向上のアプローチが選択肢です。</p>
+            <div class="btn-row">
+              <a class="btn btn-secondary" href="check.html" data-clear-result>もう一度診断する</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ② 状態 -->
+        <section class="content-card">
+          <h2>今のあなたの状態</h2>
+          <h3 id="stateTitle">いまのところ、深刻な早漏の傾向は見られません</h3>
+          <p id="stateBody" style="font-size:14px;color:#4a5268;line-height:1.85;margin-top:8px;">射精時間・頻度・コントロール感・困り感のどれも比較的落ち着いた状態です。より充実した夜の営みを目指したい場合は、パフォーマンス向上のアプローチも選択肢のひとつです。</p>
+        </section>
+
+        <!-- ③ 4項目 -->
+        <section class="content-card">
+          <h2>各項目の状態</h2>
+          <div class="result-cards-grid">
+            <article class="mini-result-card"><h3>時間の長さ</h3><p id="cardDuration"></p></article>
+            <article class="mini-result-card"><h3>早い頻度</h3><p id="cardFrequency"></p></article>
+            <article class="mini-result-card"><h3>コントロール感</h3><p id="cardControl"></p></article>
+            <article class="mini-result-card"><h3>困り具合</h3><p id="cardDistress"></p></article>
+          </div>
+        </section>
+
+        <!-- ④ アドバイス -->
+        <section class="content-card education-card">
+          <h2>パフォーマンスをさらに高めるには</h2>
+          <div class="education-item">
+            <div class="education-icon">
+              <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <div class="education-content">
+              <h3>今より「もっと良く」したい人へ</h3>
+              <p>深刻な早漏ではなくても、夜の営みの満足度や自信を高めたいと思うのは自然なことです。バリフは勃起力と持続力を高め、パートナーとのより充実した時間をサポートします。</p>
+            </div>
+          </div>
+          <div class="ed-notice" id="edNotice" style="display:none;">
+            <p class="ed-notice-text" id="edNoticeText"></p>
+          </div>
+        </section>
+
+        <!-- ⑤ CTA -->
+        <section class="cta-panel">
+          <div class="cta-panel-header">
+            <h2>あなたに最適な治療薬</h2>
+          </div>
+          <div class="cta-panel-body">
+            <p class="cta-lead">深刻な悩みがなくても、より硬く・より長く楽しむためにED治療薬を活用する人は少なくありません。バリフはパフォーマンス向上目的での利用に最適です。</p>
+            <div class="product-main-card">
+              <div class="product-image">
+                <img src="img/med-valif.jpg" alt="バリフ">
+                <span class="product-badge">パフォーマンス向上</span>
+              </div>
+              <div class="product-info">
+                <h3>バリフ</h3>
+                <p>バルデナフィル20mg配合。勃起力と持続力を高め、満足度の高い夜の営みをサポート。</p>
+              </div>
+            </div>
+            <a id="ctaPrimary" class="btn-cta-primary" href="https://modelab.store/ed-medicine-ranking/" target="_blank" rel="noopener">バリフでパフォーマンスを向上する</a>
+            <a class="btn-cta-secondary" href="https://modelab.store/ed-medicine-ranking/" target="_blank" rel="noopener">治療薬の比較を見る</a>
+            <p class="cta-sub" id="ctaSubcopy"></p>
+          </div>
+        </section>
+
+        <!-- ⑥ リトライ -->
+        <section class="retry-card">
+          <h2>もう一度診断する</h2>
+          <p>最近の体調や状況が変わると、結果も変わることがあります。</p>
+          <div class="btn-row"><a class="btn btn-secondary" href="check.html" data-clear-result>もう一度診断する</a></div>
+        </section>
+
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">© 早漏タイプ診断</div>
+  </footer>
+
+  <script src="app-pe.js"></script>
+</body>
+</html>
